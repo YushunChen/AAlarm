@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+
+        <TextView
+            android:id="@+id/hintField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Write the text below:"
+            android:textSize="28dp" />
+
+        <TextView
+            android:id="@+id/textField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="abcdEFGH"
+            android:textSize="28dp" />
+
+        <EditText
+            android:id="@+id/rewriteField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Rewrite Here"
+            android:minHeight="48dp"
+            android:maxLines="1"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:onClick="clickFunction"
+            android:text="CHECK" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

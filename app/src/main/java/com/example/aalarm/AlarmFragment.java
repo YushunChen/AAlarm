@@ -1,10 +1,16 @@
 package com.example.aalarm;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -55,6 +61,39 @@ public class AlarmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_alarm, container, false);
+    }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.game_menu, menu);
+//        return true;
+//    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Do something that differs the Activity's menu here
+        inflater.inflate(R.menu.game_menu, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.rewrite:
+                Intent intent = new Intent(getActivity(), GameRewrite.class);
+                startActivity(intent);
+                return true;
+//            case R.id.addnote:
+////                Intent intent2 = new Intent(this, MainActivity3.class);
+//                Intent intent2 = new Intent(this, MainActivity3.class);
+//                startActivity(intent2);
+//                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
