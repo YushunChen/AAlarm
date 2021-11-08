@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AAlarm">
         <activity
+            android:name=".ChooseGameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddAlarmActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

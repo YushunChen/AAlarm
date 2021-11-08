@@ -30,6 +30,8 @@ public class AlarmFragment extends Fragment {
         // Required empty public constructor
     }
 
+
+
 //    /**
 //     * Use this factory method to create a new instance of
 //     * this fragment using the provided parameters.
@@ -65,18 +67,11 @@ public class AlarmFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_alarm, container, false);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.game_menu, menu);
-//        return true;
-//    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Do something that differs the Activity's menu here
         inflater.inflate(R.menu.game_menu, menu);
-//        super.onCreateOptionsMenu(menu, inflater);
 
     }
 
