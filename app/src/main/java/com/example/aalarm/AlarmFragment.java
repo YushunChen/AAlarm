@@ -79,14 +79,17 @@ public class AlarmFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.rewrite:
-                Intent intent = new Intent(getActivity(), GameRewrite.class);
-                startActivity(intent);
+                Intent intent_rewrite = new Intent(getActivity(), GameRewrite.class);
+                startActivity(intent_rewrite);
                 return true;
-//            case R.id.addnote:
-////                Intent intent2 = new Intent(this, MainActivity3.class);
-//                Intent intent2 = new Intent(this, MainActivity3.class);
-//                startActivity(intent2);
-//                return true;
+            case R.id.math:
+                Intent intent_math = new Intent(getActivity(), GameMath.class);
+                startActivity(intent_math);
+                return true;
+            case R.id.choice:
+                Intent intent_choice = new Intent(getActivity(), GameChoice.class);
+                startActivity(intent_choice);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

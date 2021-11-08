@@ -27,6 +27,12 @@
         <activity
             android:name=".GameRewrite"
             android:exported="true" />
+        <activity
+            android:name=".GameMath"
+            android:exported="true" />
+        <activity
+            android:name=".GameChoice"
+            android:exported="true" />
     </application>
 
 </manifest>

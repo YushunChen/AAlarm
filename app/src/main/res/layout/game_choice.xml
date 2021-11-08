@@ -7,40 +7,51 @@
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:gravity="center"
+        android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/hintField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Write the text below:"
+            android:text="What is the capital of France?"
             android:textSize="28sp" />
 
-        <TextView
-            android:id="@+id/textField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="abcdEFGH"
-            android:textSize="28sp" />
-
-        <EditText
-            android:id="@+id/rewriteField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Rewrite Here"
-            android:minHeight="48dp"
-            android:maxLines="1"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="bottom"
             android:onClick="clickFunction"
-            android:text="CHECK" />
+            android:text="Paris" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:onClick="clickFunction"
+            android:text="London" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:onClick="clickFunction"
+            android:text="Washington, D.C." />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:onClick="clickFunction"
+            android:text="Beijing" />
 
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
