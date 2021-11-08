@@ -1,17 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PersonFragment">
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="personal"
-        android:textColor="@color/black"
-        android:textSize="40dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="50dp"
+        android:text="Plan Your Day!" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/water"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/water_bottle" />
+
+    <ImageView
+        android:id="@+id/fruit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/running"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/running_shoes" />
+
+    <ImageView
+        android:id="@+id/brush"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="275dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/toothbrush" />
+
+    ////////////////////////////////////////////////////////////////
+
+    <ImageView
+        android:id="@+id/sleep"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/sleeping" />
+
+    <ImageView
+        android:id="@+id/read"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/open_book" />
+
+    <ImageView
+        android:id="@+id/coding"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/laptop" />
+
+    <ImageView
+        android:id="@+id/shopping"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="275dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/carts" />
+
+/////////////////////////////////////////////////////////////////
+
+    <ImageView
+        android:id="@+id/plus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="275dp"
+        android:layout_marginTop="320dp"
+        android:src="@drawable/plus" />
+
+
+</RelativeLayout>
