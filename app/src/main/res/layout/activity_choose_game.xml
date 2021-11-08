@@ -18,63 +18,81 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/qrCodeImage"
         android:layout_width="0dp"
         android:layout_height="74dp"
         android:layout_marginTop="43dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
+        android:clickable="true"
+        android:focusable="auto"
+        android:onClick="onChooseCode"
+        app:layout_constraintEnd_toEndOf="@+id/calculatorImage"
+        app:layout_constraintStart_toStartOf="@+id/unknownImage"
         app:layout_constraintTop_toBottomOf="@+id/gameTitle"
         app:srcCompat="@drawable/qrcode" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/keyboardImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="49dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        android:clickable="true"
+        android:focusable="auto"
+        android:onClick="onChooseRewriteTask"
+        app:layout_constraintStart_toStartOf="@+id/shakePhoneImage"
+        app:layout_constraintTop_toBottomOf="@+id/shakePhoneImage"
         app:srcCompat="@drawable/keyboard" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/calculatorImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="73dp"
         android:layout_marginTop="53dp"
         android:layout_marginEnd="73dp"
+        android:clickable="true"
+        android:focusable="auto"
+        android:onClick="onChooseCalculator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/keyboardImage"
+        app:layout_constraintTop_toBottomOf="@+id/qrCodeImage"
         app:srcCompat="@drawable/calculator" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/translateImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        android:clickable="true"
+        android:focusable="auto"
+        android:onClick="onChooseQuestion"
+        app:layout_constraintStart_toStartOf="@+id/keyboardImage"
+        app:layout_constraintTop_toBottomOf="@+id/keyboardImage"
         app:srcCompat="@drawable/translate" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/unknownImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="67dp"
         android:layout_marginTop="57dp"
         android:layout_marginEnd="69dp"
+        android:clickable="true"
+        android:focusable="auto"
+        android:onClick="onChooseUnknown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/keyboardImage"
+        app:layout_constraintTop_toBottomOf="@+id/calculatorImage"
         app:srcCompat="@drawable/unknown" />
 
     <ImageView
-        android:id="@+id/imageView11"
+        android:id="@+id/shakePhoneImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginTop="43dp"
+        android:clickable="true"
+        android:focusable="auto"
+        android:onClick="onChooseShakePhone"
         app:layout_constraintStart_toStartOf="@+id/gameTitle"
         app:layout_constraintTop_toBottomOf="@+id/gameTitle"
         app:srcCompat="@drawable/shakephone" />
