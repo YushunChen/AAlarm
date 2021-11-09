@@ -15,18 +15,18 @@
             android:id="@+id/hintField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Write the text below:"
+            android:text="Calculate the math problem below:"
             android:textSize="28sp" />
 
         <TextView
             android:id="@+id/textField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="abcdEFGH"
+            android:text="1+2+3+4 = ?"
             android:textSize="28sp" />
 
         <EditText
-            android:id="@+id/rewriteField"
+            android:id="@+id/answerField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -43,4 +43,5 @@
             android:text="CHECK" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

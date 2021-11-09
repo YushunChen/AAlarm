@@ -5,4 +5,10 @@
     <item android:id="@+id/rewrite"
         android:title="Game Rewrite" />
 
+    <item android:id="@+id/math"
+        android:title="Game Math" />
+
+    <item android:id="@+id/choice"
+        android:title="Game Multiple Choice" />
+
 </menu>

@@ -33,7 +33,12 @@
         <activity
             android:name=".GameRewrite"
             android:exported="true" />
-
+        <activity
+            android:name=".GameMath"
+            android:exported="true" />
+        <activity
+            android:name=".GameChoice"
+            android:exported="true" />
         <receiver
             android:name=".AlarmReceiver"
             android:directBootAware="true"
