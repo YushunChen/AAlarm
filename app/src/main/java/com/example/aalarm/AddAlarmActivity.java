@@ -10,6 +10,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.format.DateFormat;
@@ -19,11 +20,12 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class AddAlarmActivity extends AppCompatActivity {
 
+    private static ArrayList<Alarm> alarms = new ArrayList<>();
     private static Alarm alarm;
 
     @Override
@@ -142,7 +144,9 @@ public class AddAlarmActivity extends AppCompatActivity {
         }
 
         setUserAlarm(calendar);
+        addUserAlarmToDb();
     }
+
 
     private void setUserAlarm(Calendar calendar) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -150,6 +154,27 @@ public class AddAlarmActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         Toast.makeText(getApplicationContext(), "Alarm is Set", Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    private void addUserAlarmToDb() {
+
+        // 1. Initialize SQLiteDatabase instance
+        Context context = getApplicationContext();
+        SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("alarms", Context.MODE_PRIVATE, null);
+
+        // 2. Initialize DBHelper class
+        DBHelper dbHelper = new DBHelper(sqLiteDatabase);
+
+        // 3. Save information to database
+        if (alarm != null) {
+            dbHelper.saveAlarms(alarm.getYear(), alarm.getMonth(), alarm.getDay(), alarm.getHour(), alarm.getMinute());
+        }
+
+        // 4. Go to main activity
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void onCancelAlarm(View v) {

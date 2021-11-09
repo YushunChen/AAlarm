@@ -8,6 +8,14 @@ public class Alarm {
     private int minute = -1;
     private String game;
 
+    public Alarm(int year, int month, int day, int hour, int minute) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.hour = hour;
+        this.minute = minute;
+    }
+
     public Alarm(int year, int month, int day) {
         this.year = year;
         this.month = month;
