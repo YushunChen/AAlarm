@@ -39,25 +39,6 @@ public class AlarmFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Do something that differs the Activity's menu here
-        inflater.inflate(R.menu.game_menu, menu);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.rewrite:
-                Intent intent = new Intent(getActivity(), GameRewrite.class);
-                startActivity(intent);
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     private void readUserAlarms(ViewGroup view) {
 
         // 1. Get SQLiteDatabase instance
