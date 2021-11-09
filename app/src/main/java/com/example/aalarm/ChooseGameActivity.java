@@ -23,11 +23,13 @@ public class ChooseGameActivity extends AppCompatActivity {
     }
 
     public void onChooseCalculator(View v) {
-
+        Intent intent = new Intent(this, GameMath.class);
+        startActivity(intent);
     }
 
     public void onChooseQuestion(View v) {
-
+        Intent intent = new Intent(this, GameChoice.class);
+        startActivity(intent);
     }
 
     public void onChooseUnknown(View v) {
