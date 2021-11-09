@@ -1,97 +1,82 @@
 package com.example.aalarm;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class AlarmFragment extends Fragment {
 
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
+    public static ArrayList<Alarm> alarms = new ArrayList<>();
+    ListView listView;
 
     public AlarmFragment() {
         // Required empty public constructor
     }
-
-
-
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment AlarmFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static AlarmFragment newInstance(String param1, String param2) {
-//        AlarmFragment fragment = new AlarmFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_alarm, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_alarm, container, false);
+        readUserAlarms(view);
+        return view;
     }
 
+    private void readUserAlarms(ViewGroup view) {
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Do something that differs the Activity's menu here
-        inflater.inflate(R.menu.game_menu, menu);
+        // 1. Get SQLiteDatabase instance
+        Context context = getActivity().getApplicationContext();
+        SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("alarms", Context.MODE_PRIVATE, null);
 
-    }
+        // 2. Initialize the alarms class variable
+        DBHelper dbHelper = new DBHelper(sqLiteDatabase);
+        alarms = dbHelper.readAlarms();
+        if (alarms.size() == 0) return;
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.rewrite:
-                Intent intent_rewrite = new Intent(getActivity(), GameRewrite.class);
-                startActivity(intent_rewrite);
-                return true;
-            case R.id.math:
-                Intent intent_math = new Intent(getActivity(), GameMath.class);
-                startActivity(intent_math);
-                return true;
-            case R.id.choice:
-                Intent intent_choice = new Intent(getActivity(), GameChoice.class);
-                startActivity(intent_choice);
-                return true;
+        // 3. Create an ArrayList<String> object by iterating over alarms object
+        ArrayList<String> displayAlarms = new ArrayList<>();
+        for (Alarm alarm : alarms) {
+            displayAlarms.add(String.format("Alarm set for: %s:%s on %s-%s-%s", alarm.getHour(), alarm.getMinute(), alarm.getYear(), alarm.getMonth() + 1, alarm.getDay()));
         }
 
-        return super.onOptionsItemSelected(item);
+        // 4. User ListView view to display alarms on screen
+        if (displayAlarms.size() != 0) {
+            ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, displayAlarms);
+            listView = (ListView) view.findViewById(R.id.alarmListView);
+            listView.setAdapter(adapter);
+        }
+
+        // 5. Move to AlarmDetailActivity when clicked on an alarm
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), AlarmDetailActivity.class);
+                intent.putExtra("alarmid", position);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
+
 }
