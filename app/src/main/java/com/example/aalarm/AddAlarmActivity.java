@@ -20,13 +20,12 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddAlarmActivity extends AppCompatActivity {
 
-    private static ArrayList<Alarm> alarms = new ArrayList<>();
     private static Alarm alarm;
+    int requestCode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,19 +142,19 @@ public class AddAlarmActivity extends AppCompatActivity {
             return;
         }
 
-        setUserAlarm(calendar);
+        setUserAlarm(calendar, requestCode);
+        alarm.setRequestCode(requestCode++);
         addUserAlarmToDb();
     }
 
 
-    private void setUserAlarm(Calendar calendar) {
+    private void setUserAlarm(Calendar calendar, int rCode) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, rCode, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         Toast.makeText(getApplicationContext(), "Alarm is Set", Toast.LENGTH_SHORT).show();
     }
-
 
 
     private void addUserAlarmToDb() {

@@ -56,6 +56,13 @@ public class DBHelper {
                 year, month, day, hour, minute));
     }
 
+    public boolean removeAlarm(int year, int month, int day, int hour, int minute) {
+        createTable();
+        int deleteStatus = sqLiteDatabase.delete("alarms","year=? AND month=? AND day=? AND hour=? AND minute=?",
+                new String[]{String.valueOf(year), String.valueOf(month), String.valueOf(day), String.valueOf(hour), String.valueOf(minute)});
+        return deleteStatus > 0;
+    }
+
 //    public void updateAlarm(String title, String date, String content, String username) {
 //        createTable();
 //        sqLiteDatabase.execSQL(String.format("UPDATE notes SET content = '%s', date = '%s' WHERE title = '%s' AND username = '%s'",

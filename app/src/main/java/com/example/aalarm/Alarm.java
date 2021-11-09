@@ -7,6 +7,7 @@ public class Alarm {
     private int hour = -1;
     private int minute = -1;
     private String game;
+    private int requestCode;
 
     public Alarm(int year, int month, int day, int hour, int minute) {
         this.year = year;
@@ -30,6 +31,7 @@ public class Alarm {
     public void setYear(int year) {
         this.year = year;
     }
+
     public int getYear() {
         return year;
     }
@@ -37,6 +39,7 @@ public class Alarm {
     public void setMonth(int month) {
         this.month = month;
     }
+
     public int getMonth() {
         return month;
     }
@@ -44,6 +47,7 @@ public class Alarm {
     public void setDay(int day) {
         this.day = day;
     }
+
     public int getDay() {
         return day;
     }
@@ -51,6 +55,7 @@ public class Alarm {
     public void setHour(int hour) {
         this.hour = hour;
     }
+
     public int getHour() {
         return hour;
     }
@@ -58,6 +63,7 @@ public class Alarm {
     public void setMinute(int minute) {
         this.minute = minute;
     }
+
     public int getMinute() {
         return minute;
     }
@@ -65,7 +71,16 @@ public class Alarm {
     public void setGame(String game) {
         this.game = game;
     }
+
     public String getGame() {
         return game;
+    }
+
+    public void setRequestCode(int requestCode) {
+        this.requestCode = requestCode;
+    }
+
+    public int getRequestCode() {
+        return requestCode;
     }
 }
