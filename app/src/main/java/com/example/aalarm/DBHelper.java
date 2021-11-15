@@ -16,6 +16,14 @@ public class DBHelper {
     public void createTable() {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS alarms " +
                 "(id INTEGER PRIMARY KEY, year INTEGER, month INTEGER, day INTEGER, hour INTEGER, minute INTEGER, game TEXT)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS user_activity " +
+                "(activity_id INTEGER PRIMARY KEY, name TEXT, importance TEXT, monday BOOLEAN DEFAULT(FALSE), tuesday BOOLEAN DEFAULT(FALSE), wednesday BOOLEAN DEFAULT(FALSE), " +
+                "thursday BOOLEAN DEFAULT(FALSE), friday, BOOLEAN DEFAULT(FALSE), saturday BOOLEAN DEFAULT(FALSE), sunday BOOLEAN DEFAULT(FALSE))");
+
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS activity_record " +
+                "(activity_record_id INTEGER PRIMARY KEY, year INTEGER, month INTEGER, day INTEGER, hour INTEGER, minute INTEGER, FOREIGN KEY(name) REFERENCES activity)");
+
     }
 
     public ArrayList<Alarm> readAlarms() {
