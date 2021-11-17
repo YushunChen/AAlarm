@@ -162,7 +162,7 @@ public class DBHelper {
     public boolean saveUserActivity(String name, String importance, boolean monday, boolean tuesday,
                                     boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
         createTableUserActivity();
-        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM user_activity WHERE name=(%s)", name), null);
+        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM user_activity WHERE name = '%s'", name), null);
         if(c.moveToFirst()) {
             //record exists
             return false;

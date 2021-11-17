@@ -39,6 +39,9 @@
         <activity
             android:name=".GameChoice"
             android:exported="true" />
+        <activity
+            android:name=".AddUserActivity"
+            android:exported="true" />
         <receiver
             android:name=".AlarmReceiver"
             android:directBootAware="true"
