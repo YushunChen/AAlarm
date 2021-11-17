@@ -18,6 +18,17 @@ public class DBHelper {
                 "(id INTEGER PRIMARY KEY, year INTEGER, month INTEGER, day INTEGER, hour INTEGER, minute INTEGER, game TEXT)");
     }
 
+    public void createTableUserActivity() {
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS user_activity " +
+                "(activity_id INTEGER PRIMARY KEY, name TEXT, importance TEXT, monday BOOLEAN DEFAULT(FALSE), tuesday BOOLEAN DEFAULT(FALSE), wednesday BOOLEAN DEFAULT(FALSE), " +
+                "thursday BOOLEAN DEFAULT(FALSE), friday, BOOLEAN DEFAULT(FALSE), saturday BOOLEAN DEFAULT(FALSE), sunday BOOLEAN DEFAULT(FALSE))");
+    }
+
+    public void createTableActivityRecord() {
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS activity_record " +
+                "(activity_record_id INTEGER PRIMARY KEY, year INTEGER, month INTEGER, day INTEGER, hour INTEGER, minute INTEGER, FOREIGN KEY(name) REFERENCES activity)");
+    }
+
     public ArrayList<Alarm> readAlarms() {
         createTable();
         Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM alarms"), null);
@@ -68,4 +79,122 @@ public class DBHelper {
 //        sqLiteDatabase.execSQL(String.format("UPDATE notes SET content = '%s', date = '%s' WHERE title = '%s' AND username = '%s'",
 //                content, date, title, username));
 //    }
+
+    public ArrayList<UserActivity> readUserActivity() {
+        createTableUserActivity();
+        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM user_activity"), null);
+
+        //        name TEXT, importance TEXT, monday BOOLEAN DEFAULT(FALSE), tuesday BOOLEAN DEFAULT(FALSE), wednesday BOOLEAN DEFAULT(FALSE), " +
+//        "thursday BOOLEAN DEFAULT(FALSE), friday, BOOLEAN DEFAULT(FALSE), saturday BOOLEAN DEFAULT(FALSE), sunday BOOLEAN DEFAULT(FALSE)
+
+        int nameIndex = c.getColumnIndex("name");
+        int importanceIndex = c.getColumnIndex("importance");
+        int mondayIndex = c.getColumnIndex("monday");
+        int tuesdayIndex = c.getColumnIndex("tuesday");
+        int wednesdayIndex = c.getColumnIndex("wednesday");
+        int thursdayIndex = c.getColumnIndex("thursday");
+        int fridayIndex = c.getColumnIndex("friday");
+        int saturdayIndex = c.getColumnIndex("saturday");
+        int sundayIndex = c.getColumnIndex("sunday");
+
+        c.moveToFirst();
+
+        ArrayList<UserActivity> activityList = new ArrayList<>();
+
+        while (!c.isAfterLast()) {
+            String name = c.getString(nameIndex);
+            String importance = c.getString(importanceIndex);
+            boolean monday = c.getInt(mondayIndex) > 0;
+            boolean tuesday = c.getInt(tuesdayIndex) > 0;
+            boolean wednesday = c.getInt(wednesdayIndex) > 0;
+            boolean thursday = c.getInt(thursdayIndex) > 0;
+            boolean friday = c.getInt(fridayIndex) > 0;
+            boolean saturday = c.getInt(saturdayIndex) > 0;
+            boolean sunday = c.getInt(sundayIndex) > 0;
+
+            UserActivity ua = new UserActivity(name, importance, monday, tuesday,
+                    wednesday, thursday, friday, saturday, sunday);
+
+            activityList.add(ua);
+            c.moveToNext();
+        }
+        c.close();
+        sqLiteDatabase.close();
+
+        return activityList;
+    }
+
+    public ArrayList<ActivityRecord> readActivityRecord() {
+        createTableActivityRecord();
+        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM activity_record"), null);
+
+        int yearIndex = c.getColumnIndex("year");
+        int monthIndex = c.getColumnIndex(("month"));
+        int dayIndex = c.getColumnIndex("day");
+        int hourIndex = c.getColumnIndex("hour");
+        int minuteIndex = c.getColumnIndex("minute");
+        int activityIndex = c.getColumnIndex("name");
+
+        c.moveToFirst();
+
+        ArrayList<ActivityRecord> recordList = new ArrayList<>();
+
+        while (!c.isAfterLast()) {
+
+            int year = c.getInt(yearIndex);
+            int month = c.getInt(monthIndex);
+            int day = c.getInt(dayIndex);
+            int hour = c.getInt(hourIndex);
+            int minute = c.getInt(minuteIndex);
+            String name = c.getString(activityIndex);
+
+            ActivityRecord ar = new ActivityRecord(year, month, day, hour, minute, name);
+            recordList.add(ar);
+            c.moveToNext();
+        }
+        c.close();
+        sqLiteDatabase.close();
+
+
+        return recordList;
+    }
+
+    public boolean saveUserActivity(String name, String importance, boolean monday, boolean tuesday,
+                                    boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
+        createTableUserActivity();
+        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM user_activity WHERE name = '%s'", name), null);
+        if(c.moveToFirst()) {
+            //record exists
+            return false;
+        } else {
+            // Inserting record
+            sqLiteDatabase.execSQL(String.format("INSERT INTO user_activity (name, importance, monday, tuesday, " +
+                            "wednesday, thursday, friday, saturday, sunday) VALUES ('%s', '%s', %b, " +
+                            "%b, %b, %b, %b, %b, %b)",name, importance, monday, tuesday, wednesday, thursday, friday, saturday, sunday));
+        }
+
+        return true;
+    }
+
+    public void saveActivityRecord(int year, int month, int day, int hour, int minute, String name) {
+        createTableActivityRecord();
+        sqLiteDatabase.execSQL(String.format("INSERT INTO activity_record (year, month, day, hour, minute, name) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+                year, month, day, hour, minute, name));
+    }
+
+
+    public void updateUserActivity(String name, String importance, boolean monday, boolean tuesday,
+                                   boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
+        createTableUserActivity();
+        sqLiteDatabase.execSQL(String.format("UPDATE user_activity SET importance = '%s', monday = %b, " +
+                        "tuesday = %b, wednesday = %b, thursday = %b, friday = %b, saturday = %b, sunday = %b WHERE name = '%s'",
+                importance, monday, tuesday, wednesday, thursday, friday, saturday, sunday, name));
+    }
+
+    public boolean removeUserActivity(String name) {
+        createTableUserActivity();
+        int deleteStatus = sqLiteDatabase.delete("user_activity","name=?", new String[]{name});
+        return deleteStatus > 0;
+    }
+
 }

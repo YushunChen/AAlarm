@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new AlarmFragment();
                     break;
                 case R.id.plan:
-                    fragment = new PersonFragment();
+                    fragment = new PlanFragment();
                     break;
                 case R.id.personal:
-                    fragment = new PlanFragment();
+                    fragment = new PersonFragment();
                     break;
 
             }
