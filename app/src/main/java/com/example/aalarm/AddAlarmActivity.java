@@ -156,15 +156,17 @@ public class AddAlarmActivity extends AppCompatActivity {
             return;
         }
 
+        addUserAlarmToDb();
         setUserAlarm(calendar, requestCode);
         alarm.setRequestCode(requestCode++);
-        addUserAlarmToDb();
     }
 
 
     private void setUserAlarm(Calendar calendar, int rCode) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        // pass game to the alarm when it rings
+        alarmIntent.putExtra("game", alarm.getGame());
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, rCode, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         Toast.makeText(getApplicationContext(), "Alarm is Set", Toast.LENGTH_SHORT).show();
