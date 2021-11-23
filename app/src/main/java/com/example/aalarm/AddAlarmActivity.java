@@ -17,6 +17,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -27,10 +28,23 @@ public class AddAlarmActivity extends AppCompatActivity {
     private static Alarm alarm;
     int requestCode = 0;
 
+    private TextView gameChosenText;
+    String game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_alarm);
+
+        gameChosenText = (TextView) findViewById(R.id.gameChosenText);
+        Intent intent = getIntent();
+        game = intent.getStringExtra("game");
+        if (game != null) {
+            gameChosenText.setText("Your chosen game: " + game);
+        } else {
+            gameChosenText.setText("Please select a game below.");
+        }
+
     }
 
     public static class TimePickerFragment extends DialogFragment
@@ -167,8 +181,13 @@ public class AddAlarmActivity extends AppCompatActivity {
         DBHelper dbHelper = new DBHelper(sqLiteDatabase);
 
         // 3. Save information to database
+        if (game != null) {
+            alarm.setGame(game);
+        } else {
+            alarm.setGame("no game");
+        }
         if (alarm != null) {
-            dbHelper.saveAlarms(alarm.getYear(), alarm.getMonth(), alarm.getDay(), alarm.getHour(), alarm.getMinute());
+            dbHelper.saveAlarms(alarm.getYear(), alarm.getMonth(), alarm.getDay(), alarm.getHour(), alarm.getMinute(), alarm.getGame());
         }
 
         // 4. Go to main activity
@@ -176,6 +195,7 @@ public class AddAlarmActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // TODO: temporal method to stop alarm
     public void onCancelAlarm(View v) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);

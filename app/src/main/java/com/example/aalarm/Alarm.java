@@ -9,12 +9,13 @@ public class Alarm {
     private String game;
     private int requestCode;
 
-    public Alarm(int year, int month, int day, int hour, int minute) {
+    public Alarm(int year, int month, int day, int hour, int minute, String game) {
         this.year = year;
         this.month = month;
         this.day = day;
         this.hour = hour;
         this.minute = minute;
+        this.game = game;
     }
 
     public Alarm(int year, int month, int day) {

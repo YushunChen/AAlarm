@@ -64,11 +64,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="11dp"
         android:onClick="onCancelAlarm"
         android:text="Cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/addAlarmOkButton"
         app:layout_constraintTop_toBottomOf="@+id/chooseGameButton" />
+
+    <TextView
+        android:id="@+id/gameChosenText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="10dp"
+        android:text="Your chosen game is: "
+        app:layout_constraintBottom_toTopOf="@+id/chooseGameButton"
+        app:layout_constraintEnd_toEndOf="@+id/chooseGameButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,6 +38,7 @@ public class DBHelper {
         int dayIndex = c.getColumnIndex("day");
         int hourIndex = c.getColumnIndex("hour");
         int minuteIndex = c.getColumnIndex("minute");
+        int gameIndex = c.getColumnIndex("game");
 
         c.moveToFirst();
 
@@ -50,8 +51,9 @@ public class DBHelper {
             int day = c.getInt(dayIndex);
             int hour = c.getInt(hourIndex);
             int minute = c.getInt(minuteIndex);
+            String game = c.getString(gameIndex);
 
-            Alarm alarm = new Alarm(year, month, day, hour, minute);
+            Alarm alarm = new Alarm(year, month, day, hour, minute, game);
             alarmsList.add(alarm);
             c.moveToNext();
         }
@@ -61,10 +63,10 @@ public class DBHelper {
         return alarmsList;
     }
 
-    public void saveAlarms(int year, int month, int day, int hour, int minute) {
+    public void saveAlarms(int year, int month, int day, int hour, int minute, String game) {
         createTable();
-        sqLiteDatabase.execSQL(String.format("INSERT INTO alarms (year, month, day, hour, minute) VALUES ('%s', '%s', '%s', '%s', '%s')",
-                year, month, day, hour, minute));
+        sqLiteDatabase.execSQL(String.format("INSERT INTO alarms (year, month, day, hour, minute, game) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
+                year, month, day, hour, minute, game));
     }
 
     public boolean removeAlarm(int year, int month, int day, int hour, int minute) {

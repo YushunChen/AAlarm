@@ -18,12 +18,16 @@ public class AlarmDetailActivity extends AppCompatActivity {
     Alarm alarm;
     int alarmId = -1;
 
+    TextView alarmDetailTitle;
+    TextView alarmDetailGame;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_detail);
 
-        TextView alarmDetailTitle = (TextView) findViewById(R.id.alarmDetailTitle);
+        alarmDetailTitle = (TextView) findViewById(R.id.alarmDetailTitle);
+        alarmDetailGame = (TextView) findViewById(R.id.alarmDetailGameText);
         Intent intent = getIntent();
         alarmId = intent.getIntExtra("alarmid", alarmId);
 
@@ -31,6 +35,7 @@ public class AlarmDetailActivity extends AppCompatActivity {
             alarm = AlarmFragment.alarms.get(alarmId);
             String alarmContent = String.format("Alarm set for: %s:%s on %s-%s-%s", alarm.getHour(), alarm.getMinute(), alarm.getYear(), alarm.getMonth() + 1, alarm.getDay());
             alarmDetailTitle.setText(alarmContent);
+            alarmDetailGame.setText("Your game is: " + alarm.getGame());
         }
 
     }

@@ -23,21 +23,39 @@ public class ChooseGameActivity extends AppCompatActivity {
     }
 
     public void onChooseCalculator(View v) {
-        Intent intent = new Intent(this, GameMath.class);
+//        Intent intent = new Intent(this, GameMath.class);
+//        startActivity(intent);
+
+        Intent intent = new Intent(this, AddAlarmActivity.class);
+        String gameChosen = "calculation";
+        intent.putExtra("game", gameChosen);
         startActivity(intent);
     }
 
     public void onChooseQuestion(View v) {
-        Intent intent = new Intent(this, GameChoice.class);
+//        Intent intent = new Intent(this, GameChoice.class);
+//        startActivity(intent);
+
+        Intent intent = new Intent(this, AddAlarmActivity.class);
+        String gameChosen = "question";
+        intent.putExtra("game", gameChosen);
         startActivity(intent);
     }
 
     public void onChooseUnknown(View v) {
-
+        Intent intent = new Intent(this, AddAlarmActivity.class);
+        String gameChosen = "no game";
+        intent.putExtra("game", gameChosen);
+        startActivity(intent);
     }
 
     public void onChooseRewriteTask(View v) {
-        Intent intent = new Intent(this, GameRewrite.class);
+//        Intent intent = new Intent(this, GameRewrite.class);
+//        startActivity(intent);
+
+        Intent intent = new Intent(this, AddAlarmActivity.class);
+        String gameChosen = "rewrite";
+        intent.putExtra("game", gameChosen);
         startActivity(intent);
     }
 }
