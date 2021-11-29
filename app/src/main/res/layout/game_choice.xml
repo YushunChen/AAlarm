@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:divider="@drawable/empty_divider"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:showDividers="middle">
 
 
         <TextView
             android:id="@+id/hintField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="casual"
             android:text="What is the capital of France?"
             android:textSize="28sp" />
 
@@ -23,15 +28,15 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
             android:onClick="clickFunction"
+            android:background="@drawable/custom_button2"
             android:text="Paris" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
+            android:background="@drawable/custom_button2"
             android:onClick="clickFunction"
             android:text="London" />
 
@@ -39,7 +44,7 @@
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
+            android:background="@drawable/custom_button2"
             android:onClick="clickFunction"
             android:text="Washington, D.C." />
 
@@ -47,7 +52,7 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
+            android:background="@drawable/custom_button2"
             android:onClick="clickFunction"
             android:text="Beijing" />
 

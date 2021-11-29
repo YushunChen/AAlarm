@@ -12,11 +12,13 @@
         android:id="@+id/container"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav"
+        app:itemIconTint="@drawable/drawer_item_color"
+        app:itemTextColor="@drawable/drawer_item_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomnav"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/menu"/>
+        app:menu="@menu/menu" />
 
 </RelativeLayout>

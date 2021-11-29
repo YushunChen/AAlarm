@@ -10,10 +10,13 @@
         android:id="@+id/alarmsTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="casual"
         android:text="Add Your Alarm"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,67 +24,82 @@
         android:id="@+id/pickTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button1"
         android:onClick="showTimePickerDialog"
         android:text="Pick your time"
-        android:background="@drawable/custom_button1"
-        app:layout_constraintStart_toStartOf="@+id/pickDateButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pickDateButton" />
 
-     <Button
+    <Button
         android:id="@+id/pickDateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button1"
         android:onClick="showDatePickerDialog"
         android:text="Pick your date"
+
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/alarmsTitle2" />
 
     <Button
         android:id="@+id/chooseGameButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="84dp"
+        android:background="@drawable/custom_button2"
         android:onClick="onChooseGame"
         android:text="Choose your alarm game"
-        android:background="@drawable/custom_button2"
-        app:layout_constraintBottom_toTopOf="@+id/addAlarmOkButton"
-        app:layout_constraintStart_toStartOf="@+id/addAlarmOkButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pickTimeButton" />
 
     <Button
         android:id="@+id/addAlarmOkButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginBottom="76dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_button3"
         android:onClick="onUserAddAlarm"
         android:text="Add"
-        android:background="@drawable/custom_button3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cancelAlarmButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseGameButton"
+        app:layout_constraintVertical_bias="0.04" />
 
     <Button
         android:id="@+id/cancelAlarmButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="11dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/custom_button3"
         android:onClick="onCancelAlarm"
         android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addAlarmOkButton"
-        app:layout_constraintTop_toBottomOf="@+id/chooseGameButton" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseGameButton"
+        app:layout_constraintVertical_bias="0.04" />
 
     <TextView
         android:id="@+id/gameChosenText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="23dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="10dp"
         android:text="Your chosen game is: "
         app:layout_constraintBottom_toTopOf="@+id/chooseGameButton"
-        app:layout_constraintEnd_toEndOf="@+id/chooseGameButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pickTimeButton"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

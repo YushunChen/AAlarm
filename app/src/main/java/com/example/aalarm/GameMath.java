@@ -21,7 +21,7 @@ public class GameMath extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_math);
 
-        TextView content = (TextView) findViewById(R.id.textField);
+        TextView content = (TextView) findViewById(R.id.hintField);
         //String contentStr = content.getText().toString();
 
         final int min = 90;

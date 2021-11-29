@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
+        android:fontFamily="casual"
+        android:textSize="26dp"
         android:text="Plan Your Day!" />
 
     <ImageView
@@ -87,17 +89,6 @@
         android:layout_marginLeft="275dp"
         android:layout_marginTop="220dp"
         android:src="@drawable/carts" />
-
-/////////////////////////////////////////////////////////////////
-
-    <ImageView
-        android:id="@+id/plus"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="275dp"
-        android:layout_marginTop="320dp"
-        android:src="@drawable/plus" />
 
 
 </RelativeLayout>

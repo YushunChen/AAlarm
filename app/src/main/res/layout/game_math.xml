@@ -7,22 +7,20 @@
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="@drawable/empty_divider"
         android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:layout_marginTop="100dp"
+        android:showDividers="middle" >
 
 
         <TextView
             android:id="@+id/hintField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="casual"
             android:text="Calculate the math problem below:"
-            android:textSize="28sp" />
-
-        <TextView
-            android:id="@+id/textField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="28sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/answerField"
@@ -37,8 +35,8 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="bottom"
             android:onClick="clickFunction"
+            android:background="@drawable/custom_button3"
             android:text="CHECK" />
 
     </LinearLayout>

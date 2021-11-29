@@ -20,7 +20,7 @@ public class GameRewrite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_rewrite);
 
-        TextView content = (TextView) findViewById(R.id.textField);
+        TextView content = (TextView) findViewById(R.id.hintField);
         //generate random string
         contentStr = getRandomString(15);
         content.setText(contentStr);
