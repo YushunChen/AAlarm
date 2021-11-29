@@ -30,8 +30,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Rewrite Here"
-            android:minHeight="48dp"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/button"

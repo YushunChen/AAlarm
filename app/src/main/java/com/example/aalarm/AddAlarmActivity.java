@@ -47,7 +47,7 @@ public class AddAlarmActivity extends AppCompatActivity {
 
     }
 
-    public static class TimePickerFragment extends DialogFragment
+    public static class  TimePickerFragment extends DialogFragment
             implements TimePickerDialog.OnTimeSetListener {
 
         @Override
