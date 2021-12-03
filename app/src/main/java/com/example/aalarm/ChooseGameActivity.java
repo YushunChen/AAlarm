@@ -30,9 +30,6 @@ public class ChooseGameActivity extends AppCompatActivity {
     }
 
     public void onChooseQuestion(View v) {
-//        Intent intent = new Intent(this, GameChoice.class);
-//        startActivity(intent);
-
         Intent intent = new Intent(this, AddAlarmActivity.class);
         String gameChosen = "question";
         intent.putExtra("game", gameChosen);
@@ -40,9 +37,6 @@ public class ChooseGameActivity extends AppCompatActivity {
     }
 
     public void onChooseRewriteTask(View v) {
-//        Intent intent = new Intent(this, GameRewrite.class);
-//        startActivity(intent);
-
         Intent intent = new Intent(this, AddAlarmActivity.class);
         String gameChosen = "rewrite";
         intent.putExtra("game", gameChosen);

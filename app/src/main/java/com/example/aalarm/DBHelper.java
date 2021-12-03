@@ -58,7 +58,7 @@ public class DBHelper {
             c.moveToNext();
         }
         c.close();
-        sqLiteDatabase.close();
+//        sqLiteDatabase.close();
 
         return alarmsList;
     }
@@ -121,7 +121,7 @@ public class DBHelper {
             c.moveToNext();
         }
         c.close();
-        sqLiteDatabase.close();
+//        sqLiteDatabase.close();
 
         return activityList;
     }
@@ -155,7 +155,7 @@ public class DBHelper {
             c.moveToNext();
         }
         c.close();
-        sqLiteDatabase.close();
+//        sqLiteDatabase.close();
 
 
         return recordList;

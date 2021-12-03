@@ -167,6 +167,7 @@ public class AddAlarmActivity extends AppCompatActivity {
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
         // pass game to the alarm when it rings
         alarmIntent.putExtra("game", alarm.getGame());
+        alarmIntent.putExtra("requestCode", rCode);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, rCode, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         Toast.makeText(getApplicationContext(), "Alarm is Set", Toast.LENGTH_SHORT).show();
