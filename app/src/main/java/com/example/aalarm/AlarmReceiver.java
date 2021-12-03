@@ -41,6 +41,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             case "rewrite":
                 gameIntent = new Intent(context, GameRewrite.class);
                 gameIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                gameIntent.putExtra("requestCode", alarmRequestCode);
                 context.startActivity(gameIntent);
                 break;
             case "no game":

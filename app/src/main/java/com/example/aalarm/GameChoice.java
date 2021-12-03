@@ -33,8 +33,6 @@ public class GameChoice extends AppCompatActivity {
         Intent gameIntent = getIntent();
         requestCode = gameIntent.getIntExtra("requestCode", -1);
 
-//        Log.i("info", requestCode + "");
-
     }
 
     public void clickFunction(View view){
