@@ -194,22 +194,17 @@ public class AddAlarmActivity extends AppCompatActivity {
         }
 
         // 4. Go to main activity
+        goToMainActivity();
+    }
+
+    public void onCancelAlarm(View v) {
+        goToMainActivity();
+    }
+
+    public void goToMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    // TODO: temporal method to stop alarm
-    public void onCancelAlarm(View v) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
-        alarmManager.cancel(pendingIntent);
-        Toast.makeText(getApplicationContext(), "Alarm is Canceled", Toast.LENGTH_SHORT).show();
-
-        MediaPlayer mp = AlarmReceiver.getMediaPlayer();
-        if (mp != null) {
-            AlarmReceiver.getMediaPlayer().stop();
-        }
-    }
 
 }
