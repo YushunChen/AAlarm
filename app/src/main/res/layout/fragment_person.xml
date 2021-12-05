@@ -13,8 +13,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="50dp"
         android:fontFamily="casual"
-        android:textSize="26dp"
-        android:text="Plan Your Day!" />
+        android:text="Record Your Day!"
+        android:textSize="26dp" />
 
     <ImageView
         android:id="@+id/water"
@@ -89,6 +89,19 @@
         android:layout_marginLeft="275dp"
         android:layout_marginTop="220dp"
         android:src="@drawable/carts" />
+
+    <Button
+        android:id="@+id/addAlarmButton"
+        android:layout_width="253dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="303dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/custom_button3"
+        android:text="Record Your Own Activity" />
 
 
 </RelativeLayout>

@@ -59,7 +59,6 @@ public class GameChoice extends AppCompatActivity {
         if (mp != null) {
             AlarmReceiver.getMediaPlayer().stop();
         }
-
         expireAlarmFromDb();
     }
 

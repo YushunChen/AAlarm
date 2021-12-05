@@ -26,15 +26,15 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
+            android:layout_width="168dp"
             android:layout_height="wrap_content"
-            android:onClick="clickFunction"
             android:background="@drawable/custom_button2"
+            android:onClick="clickFunction"
             android:text="Paris" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="166dp"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button2"
             android:onClick="clickFunction"
@@ -42,7 +42,7 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="163dp"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button2"
             android:onClick="clickFunction"
@@ -50,7 +50,7 @@
 
         <Button
             android:id="@+id/button4"
-            android:layout_width="wrap_content"
+            android:layout_width="163dp"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button2"
             android:onClick="clickFunction"

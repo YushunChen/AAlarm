@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="casual"
+            android:longClickable="false"
             android:text="Write the text below:"
             android:textSize="28sp" />
 
@@ -26,6 +27,7 @@
             android:id="@+id/rewriteField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:longClickable="false"
             android:ems="10"
             android:hint="Rewrite Here"
             android:maxLines="1"

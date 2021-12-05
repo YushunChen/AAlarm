@@ -13,7 +13,7 @@
         android:id="@+id/addButton"
         android:layout_width="178dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_button1"
+        android:background="@drawable/custom_button3"
         android:text="ADD ACTIVITY" />
 
     <ListView
