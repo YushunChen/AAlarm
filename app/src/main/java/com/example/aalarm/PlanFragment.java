@@ -60,7 +60,7 @@ public class PlanFragment extends Fragment {
         // 3. Create an ArrayList<String> object by iterating over alarms object
         ArrayList<String> displayUserActivity = new ArrayList<>();
         for (UserActivity ua : userAActivity) {
-            displayUserActivity.add(String.format("%s   Importance: %s", ua.getName(), ua.getImportance()));
+            displayUserActivity.add(String.format("%s   Frequency: %s", ua.getName(), ua.getFrequency()));
         }
 
         // 4. User ListView view to display alarms on screen

@@ -2,7 +2,7 @@ package com.example.aalarm;
 
 public class UserActivity {
     private String name;
-    private String importance; //LOW, MEDIUM, HIGH
+    private int frequency; //1-10
     private boolean happenMonday;
     private boolean happenTuesday;
     private boolean happenWednesday;
@@ -11,11 +11,11 @@ public class UserActivity {
     private boolean happenSaturday;
     private boolean happenSunday;
 
-    public UserActivity (String name, String importance, boolean happenMonday, boolean happenTuesday,
+    public UserActivity (String name, int frequency, boolean happenMonday, boolean happenTuesday,
                          boolean happenWednesday, boolean happenThursday, boolean happenFriday,
                          boolean happenSaturday,boolean happenSunday){
         this.name = name;
-        this.importance = importance;
+        this.frequency = frequency;
         this.happenMonday = happenMonday;
         this.happenTuesday = happenTuesday;
         this.happenWednesday = happenWednesday;
@@ -33,12 +33,12 @@ public class UserActivity {
         this.name = name;
     }
 
-    public String getImportance(){
-        return this.importance;
+    public int getFrequency(){
+        return this.frequency;
     }
 
-    public void setImportance(String importance){
-        this.importance = importance;
+    public void setFrequency(int frequency){
+        this.frequency = frequency;
     }
 
     public boolean getHappenMonday(){

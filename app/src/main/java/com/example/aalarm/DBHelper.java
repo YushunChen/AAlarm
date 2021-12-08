@@ -20,13 +20,13 @@ public class DBHelper {
 
     public void createTableUserActivity() {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS user_activity " +
-                "(activity_id INTEGER PRIMARY KEY, name TEXT, importance TEXT, monday BOOLEAN DEFAULT(FALSE), tuesday BOOLEAN DEFAULT(FALSE), wednesday BOOLEAN DEFAULT(FALSE), " +
+                "(name TEXT PRIMARY KEY, frequency INTEGER, monday BOOLEAN DEFAULT(FALSE), tuesday BOOLEAN DEFAULT(FALSE), wednesday BOOLEAN DEFAULT(FALSE), " +
                 "thursday BOOLEAN DEFAULT(FALSE), friday, BOOLEAN DEFAULT(FALSE), saturday BOOLEAN DEFAULT(FALSE), sunday BOOLEAN DEFAULT(FALSE))");
     }
 
     public void createTableActivityRecord() {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS activity_record " +
-                "(activity_record_id INTEGER PRIMARY KEY, year INTEGER, month INTEGER, day INTEGER, hour INTEGER, minute INTEGER, FOREIGN KEY(name) REFERENCES activity)");
+                "(activity_record_id INTEGER PRIMARY KEY, year INTEGER, month INTEGER, day INTEGER, hour INTEGER, minute INTEGER, name TEXT)");
     }
 
     public ArrayList<Alarm> readAlarms() {
@@ -90,7 +90,7 @@ public class DBHelper {
 //        "thursday BOOLEAN DEFAULT(FALSE), friday, BOOLEAN DEFAULT(FALSE), saturday BOOLEAN DEFAULT(FALSE), sunday BOOLEAN DEFAULT(FALSE)
 
         int nameIndex = c.getColumnIndex("name");
-        int importanceIndex = c.getColumnIndex("importance");
+        int frequencyIndex = c.getColumnIndex("frequency");
         int mondayIndex = c.getColumnIndex("monday");
         int tuesdayIndex = c.getColumnIndex("tuesday");
         int wednesdayIndex = c.getColumnIndex("wednesday");
@@ -105,7 +105,7 @@ public class DBHelper {
 
         while (!c.isAfterLast()) {
             String name = c.getString(nameIndex);
-            String importance = c.getString(importanceIndex);
+            int frequency = c.getInt(frequencyIndex);
             boolean monday = c.getInt(mondayIndex) > 0;
             boolean tuesday = c.getInt(tuesdayIndex) > 0;
             boolean wednesday = c.getInt(wednesdayIndex) > 0;
@@ -114,7 +114,7 @@ public class DBHelper {
             boolean saturday = c.getInt(saturdayIndex) > 0;
             boolean sunday = c.getInt(sundayIndex) > 0;
 
-            UserActivity ua = new UserActivity(name, importance, monday, tuesday,
+            UserActivity ua = new UserActivity(name, frequency, monday, tuesday,
                     wednesday, thursday, friday, saturday, sunday);
 
             activityList.add(ua);
@@ -161,7 +161,7 @@ public class DBHelper {
         return recordList;
     }
 
-    public boolean saveUserActivity(String name, String importance, boolean monday, boolean tuesday,
+    public boolean saveUserActivity(String name, int frequency, boolean monday, boolean tuesday,
                                     boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
         createTableUserActivity();
         Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM user_activity WHERE name = '%s'", name), null);
@@ -170,9 +170,9 @@ public class DBHelper {
             return false;
         } else {
             // Inserting record
-            sqLiteDatabase.execSQL(String.format("INSERT INTO user_activity (name, importance, monday, tuesday, " +
+            sqLiteDatabase.execSQL(String.format("INSERT INTO user_activity (name, frequency, monday, tuesday, " +
                             "wednesday, thursday, friday, saturday, sunday) VALUES ('%s', '%s', %b, " +
-                            "%b, %b, %b, %b, %b, %b)",name, importance, monday, tuesday, wednesday, thursday, friday, saturday, sunday));
+                            "%b, %b, %b, %b, %b, %b)",name, frequency, monday, tuesday, wednesday, thursday, friday, saturday, sunday));
         }
 
         return true;
