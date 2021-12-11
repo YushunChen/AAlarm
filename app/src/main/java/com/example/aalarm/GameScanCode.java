@@ -52,6 +52,8 @@ public class GameScanCode extends Activity {
                     @Override
                     public void run() {
                         Toast.makeText(GameScanCode.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        expireAlarm();
+                        goToActivityMain();
                     }
                 });
             }
