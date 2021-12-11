@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -37,6 +38,12 @@
             android:exported="true" />
         <activity
             android:name=".GameChoice"
+            android:exported="true" />
+        <activity
+            android:name=".GameScanCode"
+            android:exported="true" />
+        <activity
+            android:name=".GameShakePhone"
             android:exported="true" />
         <activity
             android:name=".AddUserActivity"

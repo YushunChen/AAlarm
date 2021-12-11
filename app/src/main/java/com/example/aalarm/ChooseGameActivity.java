@@ -15,11 +15,17 @@ public class ChooseGameActivity extends AppCompatActivity {
     }
 
     public void onChooseShakePhone(View v) {
-
+        Intent intent = new Intent(this, AddAlarmActivity.class);
+        String gameChosen = "shake phone";
+        intent.putExtra("game", gameChosen);
+        startActivity(intent);
     }
 
     public void onChooseCode(View v) {
-
+        Intent intent = new Intent(this, AddAlarmActivity.class);
+        String gameChosen = "scan code";
+        intent.putExtra("game", gameChosen);
+        startActivity(intent);
     }
 
     public void onChooseCalculator(View v) {

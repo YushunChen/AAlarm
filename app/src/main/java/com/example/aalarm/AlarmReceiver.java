@@ -23,8 +23,16 @@ public class AlarmReceiver extends BroadcastReceiver {
         String game = intent.getStringExtra("game");
         switch (game) {
             case "shake phone":
+                gameIntent = new Intent(context, GameShakePhone.class);
+                gameIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                gameIntent.putExtra("requestCode", alarmRequestCode);
+                context.startActivity(gameIntent);
                 break;
-            case "code":
+            case "scan code":
+                gameIntent = new Intent(context, GameScanCode.class);
+                gameIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                gameIntent.putExtra("requestCode", alarmRequestCode);
+                context.startActivity(gameIntent);
                 break;
             case "calculation":
                 gameIntent = new Intent(context, GameMath.class);
