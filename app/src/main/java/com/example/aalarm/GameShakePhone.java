@@ -10,7 +10,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +29,6 @@ public class GameShakePhone extends AppCompatActivity implements SensorEventList
     private float xDiff, yDiff, zDiff;
     private float shakeThreshold = 10f;
 
-    private String answer;
     private int requestCode;
     private Alarm alarm;
 
@@ -74,9 +72,6 @@ public class GameShakePhone extends AppCompatActivity implements SensorEventList
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        //x_txt.setText(sensorEvent.values[0] + "m/s2");
-        //y_txt.setText(sensorEvent.values[1] + "m/s2");
-        //z_txt.setText(sensorEvent.values[2] + "m/s2");
 
         currentX = sensorEvent.values[0];
         currentY = sensorEvent.values[1];
