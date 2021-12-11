@@ -45,7 +45,13 @@ public class AddRecord extends AppCompatActivity {
         // 3. Create an ArrayList<String> object by iterating over alarms object
         ArrayList<String> displayUserActivity = new ArrayList<>();
         for (UserActivity ua : userAActivity) {
-            displayUserActivity.add(String.format("%s", ua.getName()));
+            String name = ua.getName();
+            Date currentTime = Calendar.getInstance().getTime();
+            int year = currentTime.getYear();
+            int month = currentTime.getMonth();
+            int day = currentTime.getDay();
+            int count = dbHelper.getRecordDailyCount(year, month, day, name);
+            displayUserActivity.add(String.format("%s Count Today: %s", name, count));
         }
 
         // 4. User ListView view to display alarms on screen

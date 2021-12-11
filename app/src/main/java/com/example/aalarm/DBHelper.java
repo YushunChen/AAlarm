@@ -2,6 +2,7 @@ package com.example.aalarm;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -197,6 +198,26 @@ public class DBHelper {
         createTableUserActivity();
         int deleteStatus = sqLiteDatabase.delete("user_activity","name=?", new String[]{name});
         return deleteStatus > 0;
+    }
+
+    public int getRecordDailyCount(int year, int month, int day, String name){
+        createTableUserActivity();
+        Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM activity_record WHERE year = '%s' AND month = '%s' AND day = '%s' AND name = '%s'", year, month, day, name), null);
+
+        int count = 0;
+        if(c.moveToFirst()) {
+            while (!c.isAfterLast()) {
+               count++;
+               c.moveToNext();
+            }
+            c.close();
+        } else {
+//            Log.v("", "no result");
+            return 0;
+        }
+
+        return count;
+
     }
 
 }

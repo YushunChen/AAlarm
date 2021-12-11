@@ -86,7 +86,7 @@ public class AddUserActivity extends AppCompatActivity {
 
     public void clickMonday(View view) {
         monday = !monday;
-        Log.v("", "" + monday);
+//        Log.v("", "" + monday);
     }
 
     public void clickTuesday(View view) {
