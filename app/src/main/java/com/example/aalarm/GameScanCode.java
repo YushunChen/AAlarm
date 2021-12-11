@@ -2,7 +2,6 @@ package com.example.aalarm;
 
 import android.app.Activity;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -25,14 +24,11 @@ import com.budiyev.android.codescanner.DecodeCallback;
 import com.google.zxing.Result;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GameScanCode extends Activity {
     private CodeScanner mCodeScanner;
     private TextView infoShow;
     private static final int CAMERA_REQUEST_CODE = 101;
-
-    private String answer;
     private int requestCode;
     private Alarm alarm;
 
@@ -52,6 +48,8 @@ public class GameScanCode extends Activity {
                     @Override
                     public void run() {
                         Toast.makeText(GameScanCode.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        expireAlarm();
+                        goToActivityMain();
                     }
                 });
             }

@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:fontFamily="casual"
-        android:text="Your Planed Activities"
+        android:text="Your Planned Activities"
         android:textSize="26dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
