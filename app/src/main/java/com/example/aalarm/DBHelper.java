@@ -201,7 +201,7 @@ public class DBHelper {
     }
 
     public int getRecordDailyCount(int year, int month, int day, String name){
-        createTableUserActivity();
+        createTableActivityRecord();
         Cursor c = sqLiteDatabase.rawQuery(String.format("SELECT * FROM activity_record WHERE year = '%s' AND month = '%s' AND day = '%s' AND name = '%s'", year, month, day, name), null);
 
         int count = 0;
@@ -212,7 +212,6 @@ public class DBHelper {
             }
             c.close();
         } else {
-//            Log.v("", "no result");
             return 0;
         }
 

@@ -85,28 +85,42 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new AlarmFragment()).commit();
         }
 
-//        SendOnChannel1();
-
         Timer timer = new Timer ();
         TimerTask hourlyTask = new TimerTask () {
             @Override
             public void run () {
                 // your code here...
+                ArrayList<UserActivity> userAActivity = new ArrayList<>();
                 Date currentTime = Calendar.getInstance().getTime();
                 int year = currentTime.getYear();
                 int month = currentTime.getMonth();
                 int day = currentTime.getDay();
                 int hour = currentTime.getHours();
                 int minute = currentTime.getMinutes();
-//                Log.v("", "timertask running: " + currentTime);
-//
-//                SendOnChannel1();
 
+                // 1. Get SQLiteDatabase instance
+                Context context = (MainActivity.this).getApplicationContext();
+                SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("alarms", Context.MODE_PRIVATE, null);
+                // 2. Initialize the alarms class variable
+                DBHelper dbHelper = new DBHelper(sqLiteDatabase);
+                userAActivity = dbHelper.readUserActivity();
+                if (userAActivity.size() == 0) return;
+                // push notification
+                for (UserActivity ua : userAActivity) {
+                    String name = ua.getName();
+                    int frequency = ua.getFrequency();
+                    int count = dbHelper.getRecordDailyCount(year, month, day, name);
+                    if(count < frequency){
+                        String message = String.format("Finish %s today! %s more times to go!", name, frequency - count);
+                        SendOnChannel1(message);
+                    }
+                }
+                Log.v("", "timertask running: " + currentTime);
             }
         };
 
-// schedule the task to run starting now and then every hour...
-        timer.schedule (hourlyTask, 0l, 1000*1*10);
+        // schedule the task to run starting now and then every hour...
+        timer.schedule (hourlyTask, 1000*1*10, 1000*1*10);
 
 
     }
@@ -147,15 +161,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void SendOnChannel1(){
-//        editTextTitle = (EditText) findViewById(R.id.title);
-//        editTextMessage = (EditText) findViewById(R.id.message);
-//        String title = editTextTitle.getText().toString();
-//        String message = editTextMessage.getText().toString();
-//        Log.v("", "sendonchannel1 clicked" );
-
-        String title = "title";
-        String message = "message";
+    public void SendOnChannel1(String message){
+        String title = "Activity Reminder";
 
         Intent activityIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,

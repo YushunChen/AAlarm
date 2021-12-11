@@ -51,7 +51,7 @@ public class AddRecord extends AppCompatActivity {
             int month = currentTime.getMonth();
             int day = currentTime.getDay();
             int count = dbHelper.getRecordDailyCount(year, month, day, name);
-            displayUserActivity.add(String.format("%s Count Today: %s", name, count));
+            displayUserActivity.add(String.format("Click to record %s Today's record: %s", name, count));
         }
 
         // 4. User ListView view to display alarms on screen
@@ -66,7 +66,10 @@ public class AddRecord extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object o = listView.getItemAtPosition(position);
-                String name = (String) o; //As you are using Default String Adapter
+                String sentence = (String) o; //As you are using Default String Adapter
+                //TODO: modify accordingly if displayUserActivity.add() changes
+                String [] words = sentence.split(" ", 0);
+                String name = words[3]; //get activity name
                 Toast.makeText(getBaseContext(),name,Toast.LENGTH_SHORT).show();
 
                 Date currentTime = Calendar.getInstance().getTime();
