@@ -114,27 +114,27 @@ public class MainActivity extends AppCompatActivity {
                     Calendar today = Calendar.getInstance();
                     today.setTime(currentTime);
                     int dayOfWeek =  today.get(Calendar.DAY_OF_WEEK);
-//                    Log.v("", "day of week: " + dayOfWeek);
+                    Log.v("", "day of week: " + dayOfWeek);
                     switch(dayOfWeek){
-                        case(1):
+                        case(2):
                             push_notif = ua.getHappenMonday();
                             break;
-                        case(2):
+                        case(3):
                             push_notif = ua.getHappenTuesday();
                             break;
-                        case(3):
+                        case(4):
                             push_notif = ua.getHappenWednesday();
                             break;
-                        case(4):
+                        case(5):
                             push_notif = ua.getHappenThursday();
                             break;
-                        case(5):
+                        case(6):
                             push_notif = ua.getHappenFriday();
                             break;
-                        case(6):
+                        case(7):
                             push_notif = ua.getHappenSaturday();
                             break;
-                        case(7):
+                        case(1):
                             push_notif = ua.getHappenSunday();
                             break;
                         default:

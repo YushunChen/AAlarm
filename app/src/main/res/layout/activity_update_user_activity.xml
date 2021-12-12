@@ -5,6 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent">
 
+    <Button
+        android:id="@+id/deleteActivity"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/custom_button3"
+        android:onClick="clickDelete"
+        android:text="DELETE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,13 +112,13 @@
         android:id="@+id/cancel"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/custom_button3"
         android:onClick="clickCancel"
         android:text="CANCEL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button

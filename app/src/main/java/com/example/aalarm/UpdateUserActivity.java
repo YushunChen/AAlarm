@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -108,9 +109,29 @@ public class UpdateUserActivity extends AppCompatActivity {
 
     public void clickSunday(View view) {
         sunday = !sunday;
+        Log.v("", "" + sunday);
     }
 
     public void clickCancel(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("frgToLoad", R.id.plan);
+        startActivity(intent);
+    }
+
+    public void clickDelete(View view) {
+        //get edittextview
+        TextView activityName = (TextView) findViewById(R.id.nameField);
+        String contentName = activityName.getText().toString();
+
+        // 2.get sql instance
+        Context context = getApplicationContext();
+        SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("alarms", Context.MODE_PRIVATE,null);
+        // 3. init dbhelper
+        DBHelper db = new DBHelper(sqLiteDatabase);
+
+        // 4. remove planned activities
+        db.removeUserActivity(contentName);
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("frgToLoad", R.id.plan);
         startActivity(intent);
