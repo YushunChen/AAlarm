@@ -10,16 +10,28 @@
     ////////////////////////////////////////////////////////////////
 
     <TextView
+        android:id="@+id/aTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="casual"
-        android:text="Record Your Day!"
-        android:textSize="26dp"
+        android:text="R"
+        android:textColor="@color/Begonia"
+        android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="casual"
+        android:text="ecord Your Day!"
+        android:textSize="26dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/water"

@@ -1,109 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Edit Your Activity"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
     <LinearLayout
         android:id="@+id/LinearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="337dp"
+        android:layout_height="342dp"
         android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.238">
 
         <TextView
             android:id="@+id/nameField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:text=""
-            android:textSize="26dp"
+            android:textSize="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
+            android:id="@+id/spinner_frequency"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner_frequency" />
+            android:layout_height="wrap_content" />
 
         <CheckBox
             android:id="@+id/monday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="MONDAY"
             android:onClick="clickMonday"
-            />
+            android:text="MONDAY" />
 
         <CheckBox
             android:id="@+id/tuesday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="TUESDAY"
             android:onClick="clickTuesday"
-            />
+            android:text="TUESDAY" />
 
         <CheckBox
             android:id="@+id/wednesday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="WEDNESDAY"
             android:onClick="clickWednesday"
-            />
+            android:text="WEDNESDAY" />
 
         <CheckBox
             android:id="@+id/thursday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="THURSDAY"
             android:onClick="clickThursday"
-            />
+            android:text="THURSDAY" />
 
         <CheckBox
             android:id="@+id/friday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="FRIDAY"
             android:onClick="clickFriday"
-            />
+            android:text="FRIDAY" />
 
         <CheckBox
             android:id="@+id/saturday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="SATURDAY"
             android:onClick="clickSaturday"
-            />
+            android:text="SATURDAY" />
 
         <CheckBox
             android:id="@+id/sunday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="SUNDAY"
             android:onClick="clickSunday"
-            />
-
-        <Button
-            android:id="@+id/save"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_button4"
-            android:onClick="clickSave"
-            android:text="SAVE" />
-
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_button4"
-            android:onClick="clickCancel"
-            android:text="CANCEL" />
+            android:text="SUNDAY" />
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/custom_button3"
+        android:onClick="clickCancel"
+        android:text="CANCEL"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/custom_button4"
+        android:onClick="clickSave"
+        android:text="SAVE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
