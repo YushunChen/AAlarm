@@ -40,6 +40,7 @@
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/activity_add_record.xml" value="0.1514690982776089" />
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/activity_add_user_activity.xml" value="0.1" />
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/activity_main.xml" value="0.2198581560283688" />
+        <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/activity_update_user_activity.xml" value="0.575" />
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/dialog_add_record.xml" value="0.1514690982776089" />
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/fragment_alarm.xml" value="0.2198581560283688" />
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/fragment_person.xml" value="0.2796352583586626" />
@@ -47,8 +48,6 @@
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/layout/game_rewrite.xml" value="0.2796352583586626" />
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/menu/game_menu.xml" value="0.2074074074074074" />
         <entry key="..\:/Users/16085/Desktop/cs_407/course_project/CS407_Project/app/src/main/res/menu/menu.xml" value="0.2074074074074074" />
-        <entry key="..\:/Users/qq438/AndroidStudioProjects/CS407_Project/app/src/main/res/layout/game_scancode.xml" value="0.2672239108409321" />
-        <entry key="..\:/Users/qq438/AndroidStudioProjects/CS407_Project/app/src/main/res/layout/game_shakephone.xml" value="0.2672239108409321" />
       </map>
     </option>
   </component>

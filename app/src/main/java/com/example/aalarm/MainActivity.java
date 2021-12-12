@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,6 +36,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     private NavigationBarView bottomNavigationView;
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Timer timer = new Timer ();
-        TimerTask hourlyTask = new TimerTask () {
+        TimerTask reminderTask = new TimerTask () {
             @Override
             public void run () {
                 // your code here...
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 int hour = currentTime.getHours();
                 int minute = currentTime.getMinutes();
 
+
                 // 1. Get SQLiteDatabase instance
                 Context context = (MainActivity.this).getApplicationContext();
                 SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("alarms", Context.MODE_PRIVATE, null);
@@ -107,10 +110,41 @@ public class MainActivity extends AppCompatActivity {
                 if (userAActivity.size() == 0) return;
                 // push notification
                 for (UserActivity ua : userAActivity) {
+                    boolean push_notif = false;
+                    Calendar today = Calendar.getInstance();
+                    today.setTime(currentTime);
+                    int dayOfWeek =  today.get(Calendar.DAY_OF_WEEK);
+//                    Log.v("", "day of week: " + dayOfWeek);
+                    switch(dayOfWeek){
+                        case(1):
+                            push_notif = ua.getHappenMonday();
+                            break;
+                        case(2):
+                            push_notif = ua.getHappenTuesday();
+                            break;
+                        case(3):
+                            push_notif = ua.getHappenWednesday();
+                            break;
+                        case(4):
+                            push_notif = ua.getHappenThursday();
+                            break;
+                        case(5):
+                            push_notif = ua.getHappenFriday();
+                            break;
+                        case(6):
+                            push_notif = ua.getHappenSaturday();
+                            break;
+                        case(7):
+                            push_notif = ua.getHappenSunday();
+                            break;
+                        default:
+                            break;
+
+                    }
                     String name = ua.getName();
                     int frequency = ua.getFrequency();
                     int count = dbHelper.getRecordDailyCount(year, month, day, name);
-                    if(count < frequency){
+                    if(push_notif && (count < frequency)){
                         String message = String.format("Finish %s today! %s more times to go!", name, frequency - count);
                         SendOnChannel1(message);
                     }
@@ -119,9 +153,18 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        // schedule the task to run starting now and then every hour...
-        timer.schedule (hourlyTask, 1000*1*10, 1000*1*10);
+        // option 1: schedule the task to run starting now and then every hour...
+        timer.schedule (reminderTask, 1000*1*10, 1000*1*10);
 
+        /*
+        // option 2: run every day at specific time
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.HOUR_OF_DAY, 13);
+        today.set(Calendar.MINUTE, 17);
+        today.set(Calendar.SECOND, 0);
+        // every night at 2am you run your task
+        timer.schedule(reminderTask, today.getTime(), TimeUnit.MILLISECONDS.convert(1, TimeUnit.DAYS)); // period: 1 day
+        */
 
     }
 
@@ -184,7 +227,6 @@ public class MainActivity extends AppCompatActivity {
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setOnlyAlertOnce(true)
-                .addAction(R.mipmap.ic_launcher, "Toast", actionIntent)
                 .build();
 
         notificationManager.notify(1, notification);

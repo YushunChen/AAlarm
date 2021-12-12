@@ -4,16 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddUserActivity extends AppCompatActivity {
+
+public class UpdateUserActivity extends AppCompatActivity {
     boolean monday = false;
     boolean tuesday = false;
     boolean wednesday = false;
@@ -25,7 +26,11 @@ public class AddUserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_user_activity);
+        setContentView(R.layout.activity_update_user_activity);
+
+        String name = getIntent().getExtras().getString("activity_name");
+        TextView activityName = (TextView) findViewById(R.id.nameField);
+        activityName.setText(name);
 
         //get the spinner from the xml.
         Spinner dropdown = findViewById(R.id.spinner_frequency);
@@ -43,8 +48,8 @@ public class AddUserActivity extends AppCompatActivity {
 
     public void clickSave(View view){
         //get edittextview
-        EditText editTextName = (EditText) findViewById(R.id.nameField);
-        String contentName = editTextName.getText().toString();
+        TextView activityName = (TextView) findViewById(R.id.nameField);
+        String contentName = activityName.getText().toString();
 
         Spinner mySpinner = (Spinner) findViewById(R.id.spinner_frequency);
         String spFrequency = mySpinner.getSelectedItem().toString();
@@ -55,44 +60,30 @@ public class AddUserActivity extends AppCompatActivity {
         // 3. init dbhelper
         DBHelper db = new DBHelper(sqLiteDatabase);
 
-        if(contentName.length() <= 0){
-            Toast.makeText(AddUserActivity.this, "Please Enter valid information", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        //TODO: remove this later if add record supports parsing multi-word activity
-        if(contentName.contains(" ")){
-            Toast.makeText(AddUserActivity.this, "Please Enter only one word", Toast.LENGTH_LONG).show();
-            return;
-        }
 
         if(!(monday || tuesday || wednesday || thursday || friday || saturday || sunday)){
-            Toast.makeText(AddUserActivity.this, "Please select at least one day", Toast.LENGTH_LONG).show();
+            Toast.makeText(UpdateUserActivity.this, "Please select at least one day", Toast.LENGTH_LONG).show();
             return;
         }
 
         if(mySpinner.getSelectedItem().toString().equals("SELECT FREQUENCY")){
-            Toast.makeText(AddUserActivity.this, "Please select frequency", Toast.LENGTH_LONG).show();
+            Toast.makeText(UpdateUserActivity.this, "Please select frequency", Toast.LENGTH_LONG).show();
             return;
         }
         int frequency = Integer.parseInt(mySpinner.getSelectedItem().toString());
 
-        boolean successful = db.saveUserActivity(contentName, frequency, monday, tuesday,
+        db.updateUserActivity(contentName, frequency, monday, tuesday,
                 wednesday, thursday, friday, saturday, sunday);
 
-        if(!successful){
-            Toast.makeText(AddUserActivity.this, "activity already exists", Toast.LENGTH_LONG).show();
-        }else{
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("frgToLoad", R.id.plan);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("frgToLoad", R.id.plan);
+        startActivity(intent);
+
 
     }
 
     public void clickMonday(View view) {
         monday = !monday;
-//        Log.v("", "" + monday);
     }
 
     public void clickTuesday(View view) {
@@ -125,3 +116,4 @@ public class AddUserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+

@@ -186,12 +186,12 @@ public class DBHelper {
     }
 
 
-    public void updateUserActivity(String name, String importance, boolean monday, boolean tuesday,
+    public void updateUserActivity(String name, int frequency, boolean monday, boolean tuesday,
                                    boolean wednesday, boolean thursday, boolean friday, boolean saturday, boolean sunday) {
         createTableUserActivity();
-        sqLiteDatabase.execSQL(String.format("UPDATE user_activity SET importance = '%s', monday = %b, " +
+        sqLiteDatabase.execSQL(String.format("UPDATE user_activity SET frequency = '%s', monday = %b, " +
                         "tuesday = %b, wednesday = %b, thursday = %b, friday = %b, saturday = %b, sunday = %b WHERE name = '%s'",
-                importance, monday, tuesday, wednesday, thursday, friday, saturday, sunday, name));
+                frequency, monday, tuesday, wednesday, thursday, friday, saturday, sunday, name));
     }
 
     public boolean removeUserActivity(String name) {

@@ -51,7 +51,7 @@ public class AddRecord extends AppCompatActivity {
             int month = currentTime.getMonth();
             int day = currentTime.getDay();
             int count = dbHelper.getRecordDailyCount(year, month, day, name);
-            displayUserActivity.add(String.format("Click to record %s Today's record: %s", name, count));
+            displayUserActivity.add(String.format("Click to record %s \nToday's record: %s", name, count));
         }
 
         // 4. User ListView view to display alarms on screen

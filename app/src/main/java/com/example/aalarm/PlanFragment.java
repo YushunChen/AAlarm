@@ -60,7 +60,18 @@ public class PlanFragment extends Fragment {
         // 3. Create an ArrayList<String> object by iterating over alarms object
         ArrayList<String> displayUserActivity = new ArrayList<>();
         for (UserActivity ua : userAActivity) {
-            displayUserActivity.add(String.format("%s   Frequency: %s", ua.getName(), ua.getFrequency()));
+            String[] dayOfWeeks = new String[7];
+            dayOfWeeks[0] = ua.getHappenMonday() ? "Mon" : "";
+            dayOfWeeks[1] = ua.getHappenTuesday() ? "Tue" : "";
+            dayOfWeeks[2] = ua.getHappenWednesday() ? "Wed" : "";
+            dayOfWeeks[3] = ua.getHappenThursday() ? "Thu" : "";
+            dayOfWeeks[4] = ua.getHappenFriday() ? "Fri" : "";
+            dayOfWeeks[5] = ua.getHappenSaturday() ? "Sat" : "";
+            dayOfWeeks[6] = ua.getHappenSunday() ? "Sun" : "";
+
+            displayUserActivity.add(String.format("%s Frequency: %s %s%s%s%s%s%s%s", ua.getName(),
+                    ua.getFrequency(),  dayOfWeeks[0],  dayOfWeeks[1],  dayOfWeeks[2],  dayOfWeeks[3],
+                    dayOfWeeks[4], dayOfWeeks[5],  dayOfWeeks[6]));
         }
 
         // 4. User ListView view to display alarms on screen
@@ -74,9 +85,12 @@ public class PlanFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(getActivity().getApplicationContext(), AlarmDetailActivity.class);
-//                intent.putExtra("activity_id", position);
-//                startActivity(intent);
+                Intent intent = new Intent(getActivity().getApplicationContext(), UpdateUserActivity.class);
+                String content = (String) (listView.getItemAtPosition(position));
+                String [] words = content.split(" ", 0);
+                String name = words[0]; //get activity name
+                intent.putExtra("activity_name", name);
+                startActivity(intent);
             }
         });
     }
